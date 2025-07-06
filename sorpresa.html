@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎉 Tu Sorpresa 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #ffe0ec, #fcd1f5);
+      font-family: 'Dancing Script', cursive;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      color: #ff69b4;
+    }
+
+    .contenedor {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .lateral {
+      display: flex;
+      flex-direction: row;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .cuadro {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      text-align: center;
+      padding: 10px;
+      width: 150px;
+      animation: aparecer 1.5s ease forwards;
+    }
+
+    .cuadro img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .cuadro p {
+      color: #ff69b4;
+      font-size: 1.1em;
+      margin: 0;
+    }
+
+    .centro {
+      text-align: center;
+      max-width: 90%;
+    }
+
+    .centro h1 {
+      color: #ff1493;
+      font-size: 2.3em;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px #fff;
+    }
+
+    .mensaje-carta {
+      background: #fff;
+      color: #ff69b4;
+      border-radius: 15px;
+      padding: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      font-size: 1.2em;
+      line-height: 1.5em;
+      margin-top: 20px;
+      animation: aparecer 2s ease forwards;
+    }
+
+    .corazones-grandes {
+      font-size: 3em;
+      animation: latido 1.5s infinite;
+      color: #ff4da6;
+      margin-top: 10px;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes latido {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    /* Confeti */
+    canvas {
+      position: absolute; /* Cambiado de fixed a absolute */
+      top: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Responsive ajustes */
+    @media (max-width: 480px) {
+      .cuadro {
+        width: 130px;
+      }
+      .centro h1 {
+        font-size: 1.8em;
+      }
+      .mensaje-carta {
+        font-size: 1.1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="confettiCanvas"></canvas>
+
+  <div class="contenedor">
+    <!-- Cuadros con mensajes y fotos -->
+    <div class="lateral">
+      <div class="cuadro">
+        <img src="foto1.jpg" alt="Nosotros 1">
+        <p>🌸 “Eres mi sol en los días grises.”</p>
+      </div>
+      <div class="cuadro">
+        <img src="FOTO3.JPG" alt="Nosotros 2">
+        <p>💖 “Gracias por existir en mi vida.”</p>
+      </div>
+    </div>
+
+    <!-- Corazones en el centro -->
+    <div class="centro">
+      <h1>🎉 ¡Feliz Cumpleaños, ciry ! 🎂</h1>
+      <div class="corazones-grandes">❤️💖❤️</div>
+
+      <!-- Mensaje romántico -->
+      <div class="mensaje-carta">
+        💖 <b>“Para ti, la dueña de mis pensamientos”</b><br><br>
+        Hoy, aunque el destino nos haya llevado por caminos distintos, no puedo evitar dedicarte estas palabras. No porque espere algo a cambio, sino porque el amor verdadero nunca se calla, y lo que siento por ti merece ser dicho… una vez más. <br><br>
+        Desde que entraste en mi vida, descubrí lo que significa amar sin medida. Contigo aprendí que el amor no es solo abrazar en los días felices, sino también querer incluso cuando la vida se pone difícil. No importa el tiempo ni la distancia: tú sigues siendo la persona que hace que mi corazón lata más fuerte con solo recordarte. <br><br>
+        Cada momento contigo fue un regalo: tus sonrisas, tus abrazos, tus locuras… cada detalle quedó tatuado en mi memoria. <br><br>
+        Aunque no estemos juntos, quiero que sepas que siempre tendrás un lugar en mi corazón. Eres, y seguirás siendo, la historia más bonita que he vivido… porque no se puede olvidar a quien un día fue todo. <br><br>
+        Feliz cumpleaños, mi amor eterno. 🩷 Que la vida te llene de la felicidad que mereces.
+      </div>
+    </div>
+
+    <div class="lateral">
+      <div class="cuadro">
+        <img src="IMAGEN9.JPG" alt="Nosotros 3">
+        <p>💌 “Siempre serás mi razón de sonreír.”</p>
+      </div>
+      <div class="cuadro">
+        <img src="IMAGEN6.JPG" alt="Nosotros 4">
+        <p>✨ “Te quiero más que ayer y menos que mañana.”</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Confeti animación
+    const canvas = document.getElementById('confettiCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = document.body.scrollHeight; // Ajusta a toda la altura de la página
+
+    const confettiPieces = Array.from({length: 250}, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 6 + 2,
+        color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+        speed: Math.random() * 3 + 1
+    }));
+
+    function drawConfetti() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        confettiPieces.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = p.color;
+            ctx.fill();
+            p.y += p.speed;
+            if (p.y > canvas.height) p.y = -10;
+        });
+        requestAnimationFrame(drawConfetti);
+    }
+    drawConfetti();
+  </script>
+</body>
+</html>
